@@ -49,7 +49,20 @@ const header = document.querySelector('.page__header');
  * 
 */
 
-// build the nav
+// Create a function to build the nav
+function buildNav() {
+  for (let section of sections) {
+      // Create a list item
+    const navItem = document.createElement('li');
+    // Create a link
+    navItem.innerHTML = `<a href="#${section.id}" class="menu__link">${section.dataset.nav}</a>`;
+// Append the li to the ul
+    fragment.appendChild(navItem);
+  }
+  navList.appendChild(fragment);
+}
+    
+
 
 
 // Add class 'active' to section when near top of viewport
