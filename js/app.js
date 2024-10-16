@@ -18,10 +18,21 @@
  * Great to have comments before crucial code sections within the procedure.
 */
 
+
 /**
  * Define Global Variables
  * 
 */
+const navBar = document.querySelector('.navbar__menu');
+const navList = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const fragment = document.createDocumentFragment();
+const footer = document.querySelector('.page__footer');
+const header = document.querySelector('.page__header');
+
+
+
+
 
 
 /**
@@ -44,6 +55,7 @@
 // Add class 'active' to section when near top of viewport
 
 
+
 // Scroll to anchor ID using scrollTO event
 
 
@@ -53,10 +65,14 @@
  * 
 */
 
-// Build menu 
+// Build menu
+
 
 // Scroll to section on link click
 
 // Set sections as active
+
+
+
 
 
