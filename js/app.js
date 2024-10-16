@@ -30,10 +30,6 @@ const footer = document.querySelector('.page__footer');
 const header = document.querySelector('.page__header');
 
 
-
-
-
-
 /**
  * End Global Variables
  * Start Helper Functions
@@ -59,11 +55,13 @@ function buildNav() {
     navList.appendChild(navItem);
 
     // Scroll to section on link click
-    scrollToSection(navItem, section);
+    navItem.addEventListener('click', function () {
+      event.preventDefault();
+      section.scrollIntoView({behavior: 'smooth'});
+    });        
   }
   navBar.appendChild(navList);
-}
-    
+} 
 
 
 
@@ -74,7 +72,7 @@ function setActiveSection() {
     // Get the position of the section
     const sectionPosition = section.getBoundingClientRect();
     // Add class 'active' to the section when it is near the top of viewport
-    if (sectionPosition.top <= 390 && sectionPosition.bottom >= 360) {
+    if (sectionPosition.top >= 0 && sectionPosition.bottom < window.innerHeight / 2) {
       section.classList.add('active');
     } else {
       section.classList.remove('active');
@@ -85,12 +83,7 @@ function setActiveSection() {
 
 
 // Create a function to scrollTo anchor ID using scrollTO event
-function scrollToSection(navItem, section) { 
-  navItem.addEventListener('click', function () {
-    event.preventDefault();
-    section.scrollIntoView({behavior: 'smooth'});
-  });
-}
+
 
 // Create a function to show/hide navigation menu
 function showHideNav() { 
@@ -98,12 +91,12 @@ function showHideNav() {
   window.addEventListener('scroll', function () {
     // Set the active section to active
     setActiveSection();
+    header.style.display = 'block';
     // Show the navigation menu
-    if (timer !== null) {
+    if (timer){
       clearTimeout(timer);
-      header.style.display = 'block';
     }
-    timer = setTimeout(function () {
+    timer = setTimeout(() => {
       header.style.display = 'none';
     }, 3000)
   });
@@ -116,8 +109,15 @@ function showHideNav() {
  * 
 */
 
+if (navBar && navList && sections.length > 0 && header) {
+  buildNav();
+  showHideNav();
+} else {
+  console.error('One or more elements not found in the DOM');
+}
+
 // Build menu
-buildNav();
+
 
 
 // Scroll to section on link click
