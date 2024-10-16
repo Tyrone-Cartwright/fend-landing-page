@@ -26,7 +26,6 @@
 const navBar = document.querySelector('.navbar__menu');
 const navList = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
-const fragment = document.createDocumentFragment();
 const footer = document.querySelector('.page__footer');
 const header = document.querySelector('.page__header');
 
@@ -57,19 +56,58 @@ function buildNav() {
     // Create a link
     navItem.innerHTML = `<a href="#${section.id}" class="menu__link">${section.dataset.nav}</a>`;
 // Append the li to the ul
-    fragment.appendChild(navItem);
+    navList.appendChild(navItem);
+
+    // Scroll to section on link click
+    scrollToSection(navItem, section);
   }
-  navList.appendChild(fragment);
+  navBar.appendChild(navList);
 }
     
 
 
 
 // Add class 'active' to section when near top of viewport
+function setActiveSection() { 
+  // Select all sections
+  for (let section of sections) {
+    // Get the position of the section
+    const sectionPosition = section.getBoundingClientRect();
+    // Add class 'active' to the section when it is near the top of viewport
+    if (sectionPosition.top <= 390 && sectionPosition.bottom >= 360) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  }
+}
 
 
 
-// Scroll to anchor ID using scrollTO event
+// Create a function to scrollTo anchor ID using scrollTO event
+function scrollToSection(navItem, section) { 
+  navItem.addEventListener('click', function () {
+    event.preventDefault();
+    section.scrollIntoView({behavior: 'smooth'});
+  });
+}
+
+// Create a function to show/hide navigation menu
+function showHideNav() { 
+  let timer = null;
+  window.addEventListener('scroll', function () {
+    // Set the active section to active
+    setActiveSection();
+    // Show the navigation menu
+    if (timer !== null) {
+      clearTimeout(timer);
+      header.style.display = 'block';
+    }
+    timer = setTimeout(function () {
+      header.style.display = 'none';
+    }, 3000)
+  });
+}
 
 
 /**
@@ -79,13 +117,11 @@ function buildNav() {
 */
 
 // Build menu
+buildNav();
 
 
 // Scroll to section on link click
 
+
+
 // Set sections as active
-
-
-
-
-
