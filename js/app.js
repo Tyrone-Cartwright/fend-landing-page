@@ -59,10 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         section.scrollIntoView({behavior: 'smooth'});
       });        
-    });
-    
-  } 
-  
+    });    
+  }   
   
   
   // Add class 'active' to section when near top of viewport
@@ -118,13 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.error('One or more elements not found in the DOM');
   }
   
-  // Build menu
-  
-  
-  
-  // Scroll to section on link click
-  
-  
-  
+  // Build menu  
+  // Scroll to section on link click  
   // Set sections as active
 });
