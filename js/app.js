@@ -24,9 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
    * Define Global Variables
    * 
   */
+  // Get the navigation menu
   const navBar = document.querySelector('.navbar__menu');
+  // Get the navigation list
   const navList = document.getElementById('navbar__list');
+  // Get all the sections
   const sections = document.querySelectorAll('section');
+  // Get the header
   const header = document.querySelector('.page__header');
   
   
@@ -46,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Create a function to build the nav
   function buildNav() {
+    // Loop through the sections
     sections.forEach((section) => {
       // Create a list item
       const navItem = document.createElement('li');
@@ -56,7 +61,9 @@ document.addEventListener('DOMContentLoaded', function () {
   
       // Scroll to section on link click
       navItem.addEventListener('click', function (event) {
+        // Prevent the default action
         event.preventDefault();
+        // Scroll to the section smoothly
         section.scrollIntoView({behavior: 'smooth'});
       });        
     });    
@@ -93,10 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
       // Show the navigation menu
       header.style.display = 'block';
       // Hide the navigation menu after 3 seconds
-      if (timer){
+      if (timer) {
+        // Clear the timeout
         clearTimeout(timer);
       }
+      // Set the timeout
       timer = setTimeout(() => {
+        // Hide the navigation menu
         header.style.display = 'none';
       }, 3000)
     });
