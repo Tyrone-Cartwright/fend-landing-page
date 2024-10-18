@@ -111,6 +111,27 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 3000)
     });
   }
+
+  // Make sections collapsible
+  function makeCollapsible() {
+    const sections = document.querySelectorAll('section');
+    // Loop through the sections
+    sections.forEach(section => {
+      // Create a button
+      const button = document.createElement('button');
+      // Set the button text
+      button.textContent = 'Collapse';
+      // Append the button to the section
+      section.prepend(button);
+      // Add a click event listener to the button
+      button.addEventListener('click', function () {
+        // Toggle the section
+        section.classList.toggle('collapsed');
+        // Set the button text
+        button.textContent = section.classList.contains('collapsed') ? 'Expand' : 'Collapse';
+      });
+    });
+  }
   
   
   /**
@@ -122,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (navBar && navList && sections.length > 0 && header) {
     buildNav();
     showHideNav();
+    makeCollapsible();
   } else {
     console.error('One or more elements not found in the DOM');
   }

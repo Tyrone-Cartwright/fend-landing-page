@@ -221,3 +221,26 @@ section.active .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
+/* Hide the section content when it is collapsed */
+section.collapsed .landing__container {
+  display: none; /* Hide the content */
+}
+
+/* Optional: Add a visual indicator */
+button {
+  display: block;
+  margin: 1em auto;
+  padding: 0.5em 1em;
+  background-color: #35c7db;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6ab1eb;
+}
