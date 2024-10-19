@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Add class 'active' to section when near top of viewport
   function setActiveSection() { 
     // Loop through the sections
-    sections.forEach(section => {
+    sections.forEach((section, index) => {
       if (isInViewport(section)) {
         removeActiveClass();
         // Add the active class to the section
@@ -114,6 +114,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const navLinks = document.querySelectorAll('.menu__link');
         // Add the active class to the nav link
         navLinks[index].classList.add('active');
+      } else {
+        // Remove the active class from the section
+        section.classList.remove('active');
       }
     });    
   } 

@@ -225,14 +225,15 @@ section.active .landing__container::after {
 /* Highlight the active section */
 section.active {
     background-color: #c5abeb;
-    border: 2px solid #4CAF50
+    border: 2px solid #4CAF50;
+    transition: background-color 0.5s ease;
 }
 
 /* Highlight the active navigation link */
 .menu__link.active {
-    background-color: #4CAF50;
+    background-color: #c5abeb;
     color: white;
-    border-radius: 5px;
+    transition: background-color 0.5s ease;
 }
 
 /* Hide the section content when it is collapsed */
