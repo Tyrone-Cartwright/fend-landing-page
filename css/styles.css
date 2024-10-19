@@ -226,14 +226,14 @@ section.active .landing__container::after {
 section.active {
     background-color: #c5abeb;
     border: 2px solid #4CAF50;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.6s ease-in-out;
 }
 
 /* Highlight the active navigation link */
 .menu__link.active {
     background-color: #c5abeb;
     color: white;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.6s ease-in-out;
 }
 
 /* Hide the section content when it is collapsed */
