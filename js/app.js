@@ -48,19 +48,51 @@ document.addEventListener('DOMContentLoaded', function () {
    * 
   */
   
+  //  Check if a section is in the viewport
+  function isInViewport(section) { 
+    // Get the position of the section
+    const sectionPosition = section.getBoundingClientRect();
+    // Check if the section is in the viewport
+    return (sectionPosition.top >= 0 && sectionPosition.top <= window.innerHeight / 2);
+  }
+
+  // Remove 'active' class from all sections and nav links
+  function removeActiveClass() {
+    // Loop through the sections
+    sections.forEach(section => {
+      // Remove the active class from the section
+      section.classList.remove('active');
+    });
+    // Get all the nav links
+    const navLinks = document.querySelectorAll('.menu__link');
+    // Loop through the nav links
+    navLinks.forEach(link => {
+      // Remove the active class from the nav link
+      link.classList.remove('active');
+    });
+  }
+  
   // Create a function to build the nav
   function buildNav() {
     // Loop through the sections
     sections.forEach((section) => {
-      // Create a list item
+      // Create a list item and link      
       const navItem = document.createElement('li');
-      // Create a link
-      navItem.innerHTML = `<a href="#${section.id}" class="menu__link">${section.dataset.nav}</a>`;
-      // Append the li to the ul
+      const navLink = document.createElement('a');
+     
+      //  Set attributes and inner text for the link
+      navLink.setAttribute('href', `#${section.id}`);
+      navLink.textContent = section.dataset.nav;
+      navLink.classList.add('menu__link'); // Add a class to the link
+
+      // Append the link to the list item
+      navItem.appendChild(navLink);
+      // Append the list item to the navigation list
       navList.appendChild(navItem);
+
   
       // Scroll to section on link click
-      navItem.addEventListener('click', function (event) {
+      navLink.addEventListener('click', function (event) {
         // Prevent the default action
         event.preventDefault();
         // Scroll to the section smoothly
@@ -74,17 +106,16 @@ document.addEventListener('DOMContentLoaded', function () {
   function setActiveSection() { 
     // Loop through the sections
     sections.forEach(section => {
-      // Get the position of the section
-      const sectionPosition = section.getBoundingClientRect();
-      // Check if the section is in the viewport
-      if (sectionPosition.top >= 0 && sectionPosition.top <= window.innerHeight / 2) {
+      if (isInViewport(section)) {
+        removeActiveClass();
         // Add the active class to the section
         section.classList.add('active');
-      } else {
-        // Remove the active class from the section
-        section.classList.remove('active');
+        // Get the nav link
+        const navLinks = document.querySelectorAll('.menu__link');
+        // Add the active class to the nav link
+        navLinks[index].classList.add('active');
       }
-    });
+    });    
   } 
   
   

@@ -222,6 +222,19 @@ section.active .landing__container::after {
 	}
 }
 
+/* Highlight the active section */
+section.active {
+    background-color: #c5abeb;
+    border: 2px solid #4CAF50
+}
+
+/* Highlight the active navigation link */
+.menu__link.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
 /* Hide the section content when it is collapsed */
 section.collapsed .landing__container {
   display: none; /* Hide the content */
