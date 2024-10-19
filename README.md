@@ -14,6 +14,7 @@ This project is a fully responsive **landing page** designed to work across vari
 - [Responsive Design](#responsive-design)
 - [Contributing](#contributing)
 - [License](#license)
+- [Website](https://tyrone-cartwright.github.io/fend-landing-page/)
 
 ---
 
