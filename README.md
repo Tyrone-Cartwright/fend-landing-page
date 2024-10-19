@@ -58,7 +58,7 @@ git clone https://github.com/yourusername/fend-landing-page.git
 ```
 2. #### Navigate to the Project Directory:
 ```bash
-cd responsive-landing-page
+cd fend-landing-page
 ```
 3. ### Open the Project in a Browser: Open the index.html file in your preferred browser:
 
